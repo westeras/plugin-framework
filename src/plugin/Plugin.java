@@ -1,3 +1,4 @@
+package plugin;
 import javax.swing.JComponent;
 
 
@@ -13,5 +14,4 @@ public abstract class Plugin {
 	public abstract void init();
 	public abstract void doActions();
 	public abstract void unload();
-	
 }
