@@ -1,13 +1,20 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
-/**
- * TODO Put here a description of what this class does.
- *
- * @author schepedw.
- *         Created Sep 29, 2013.
- */
-public class ListingPanel extends JPanel{
+public class ListingPanel extends JPanel {
+
+	public ListingPanel() {
+		setLayout(new BorderLayout());
+		
+		add(new Toolbar());
+	}
 
 }
