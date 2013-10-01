@@ -1,9 +1,9 @@
 package plugin;
-import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 
 public abstract class Plugin {
-	public JComponent component;
+	public JPanel panel;
 	
 	public void run() {
 		init();
@@ -14,4 +14,5 @@ public abstract class Plugin {
 	public abstract void init();
 	public abstract void doActions();
 	public abstract void unload();
+	public abstract void setComponent(FrameworkUI ui);
 }
