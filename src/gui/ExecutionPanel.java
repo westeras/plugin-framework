@@ -2,12 +2,8 @@ package gui;
 
 import javax.swing.JPanel;
 
-/**
- * TODO Put here a description of what this class does.
- *
- * @author schepedw.
- *         Created Sep 29, 2013.
- */
-public class ExecutionPanel extends JPanel{
+public class ExecutionPanel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
 
 }

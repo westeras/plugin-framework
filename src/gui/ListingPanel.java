@@ -3,9 +3,6 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -14,19 +11,23 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.sun.org.apache.bcel.internal.generic.Select;
-
 import plugin.PluginFile;
 import plugin.PluginManager;
 
 public class ListingPanel extends JPanel {
+	
+	private static final long serialVersionUID = 1L;
+
 	public ListingPanel(PluginFile[] plugins) {
-		String imgLocation = "images/file.gif";
-		URL imageURL = Toolbar.class.getResource(imgLocation);
 		setLayout(new BorderLayout());
 		final JList<PluginFile> list = new JList<PluginFile>();
+		
+		String[] names = new String[plugins.length];
+		for (int i = 0; i < plugins.length; i++) {
+			names[i] = plugins[i].getPluginName();
+		}
+		
 		list.setListData(plugins);
-
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		final JButton selectionButton = new JButton();
 		list.addListSelectionListener(new ListSelectionListener() {
@@ -46,41 +47,18 @@ public class ListingPanel extends JPanel {
 		add(selectionButton, BorderLayout.SOUTH);
 	}
 
-	private void initializeButton(JButton selectionButton, final JList list) {
+	private void initializeButton(JButton selectionButton, final JList<PluginFile> list) {
 		selectionButton.setText("Load");
-		selectionButton.addMouseListener(new MouseListener() {
+		selectionButton.addActionListener(new ActionListener() {
 
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub.
-
+			public void actionPerformed(ActionEvent arg0) {
+				PluginFile selected = (PluginFile) list.getSelectedValue();
+				Platform.ePanel.removeAll();
+				Platform.ePanel.add(PluginManager.loadPlugin(selected));
+				Platform.ePanel.repaint();
+				Platform.platform.pack();
 			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub.
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub.
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub.
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				PluginFile selected=(PluginFile) list.getSelectedValue();
-				PluginManager.runSelected(selected);
-				System.out.println("HOLA!");
-			}
-
 		});
 	}
 

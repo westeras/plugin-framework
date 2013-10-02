@@ -14,5 +14,5 @@ public abstract class Plugin {
 	public abstract void init();
 	public abstract void doActions();
 	public abstract void unload();
-	public abstract void setComponent(FrameworkUI ui);
+	public abstract JPanel getComponent();
 }

@@ -2,40 +2,32 @@ package plugin;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 
 public class PluginManager {
-	private ArrayList<PluginFile> plugins;
 	
-	public PluginManager() {
-		this.plugins = new ArrayList<PluginFile>();
-		String current = System.getProperty("user.dir");
-		System.out.println(current);
-	}
-	
-	public ArrayList<PluginFile> loadInstalledPlugins() {
-		File path = new File("src/plugins");
+	public static ArrayList<PluginFile> loadInstalledPlugins() {
+		File path = new File(".");
 		File files[] = path.listFiles();
 		ArrayList<PluginFile> filePaths = new ArrayList<PluginFile>();
 		for (File file : files) {
-			PluginFile pFile = new PluginFile(file.getName(), file.getPath());
-			filePaths.add(pFile);
+			if (file.getName().contains(".jar")) {
+				PluginFile pFile = new PluginFile(file.getName().replace(".jar", ""), file.getPath());
+				filePaths.add(pFile);
+			}
 		}
 		return filePaths;
 	}
 	
-	public ArrayList<PluginFile> getPlugins() {
-		return this.plugins;
-	}
-	
-	public void loadPlugin(PluginFile plugin, FrameworkUI ui) {
+	public static JPanel loadPlugin(PluginFile plugin) {
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
+		Plugin loadedPlugin = null;
 		try {
-			Plugin loadedPlugin = (Plugin) loader.loadClass("plugins.TextPlugin").newInstance();
-			loadedPlugin.setComponent(ui);
-			loadedPlugin.doActions();
-			//loader.loadClass("plugins." + plugin.getPluginName());
+			loadedPlugin = (Plugin) loader.loadClass("TextPlugin").newInstance();
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
+		return loadedPlugin.getComponent();
 	}
 }
