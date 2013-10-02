@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class PluginManager {
 	
 	public static ArrayList<PluginFile> loadInstalledPlugins() {
-		File path = new File("src/plugin");
+		File path = new File("plugins");
 		File files[] = path.listFiles();
 		ArrayList<PluginFile> filePaths = new ArrayList<PluginFile>();
 		try {
@@ -17,7 +17,7 @@ public class PluginManager {
 			for (File file : files) {
 				if (file.getName().contains(".jar")) {
 					String name = file.getName().replace(".jar", "");
-					Plugin plugin = (Plugin) loader.loadClass("plugin." + name).newInstance();
+					Plugin plugin = (Plugin) loader.loadClass("plugins." + name).newInstance();
 					PluginFile pFile = new PluginFile(name, file.getPath(), plugin);
 					filePaths.add(pFile);
 				}
