@@ -3,34 +3,26 @@ package gui;
 import java.awt.BorderLayout;
 import java.io.PrintStream;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class ExecutionPanel extends JPanel {
+public class StatusPanel extends JPanel {
 
-	public ExecutionPanel() {
-		add(new JLabel("Console"));
-
-		JTextArea ta = new JTextArea();
-		Console output = new Console(ta, 60);
-		PrintStream ps = new PrintStream(output);
-		System.setOut(ps);
-		System.setErr(ps);
-
-		add(new JScrollPane(ta));
-
-		setVisible(true);
-
-		for (int i = 0; i < 10; i++) {
-			System.out.println(i);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException exception) {
-				// TODO Auto-generated catch-block stub.
-				exception.printStackTrace();
-			}
+		protected static void createConsole(JFrame frame) {
+			
+			frame.add( new JLabel("Console" ), BorderLayout.SOUTH );
+	        JTextArea ta = new JTextArea(10,10);
+	        Console taos = new Console( ta, 60 );
+	        PrintStream ps = new PrintStream( taos );
+	        System.setOut( ps );
+	        System.setErr( ps );
+	        frame.add( new JScrollPane( ta ), BorderLayout.SOUTH  );
+	        frame.pack();
+	        frame.setVisible( true );
 		}
-	}
+	
+
 }

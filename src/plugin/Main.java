@@ -9,7 +9,6 @@ public class Main {
 		ArrayList<PluginFile> files = manager.loadInstalledPlugins();
 		FrameworkUI ui = new FrameworkUI();
 		ui.setVisible(true);
-
 		PluginFile plugin = files.get(0);
 		manager.loadPlugin(plugin, ui);
 	}
