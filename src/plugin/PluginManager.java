@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class PluginManager {
 	
 	public static ArrayList<PluginFile> loadInstalledPlugins() {
-		File path = new File(".");
+		File path = new File("plugins/");
 		File files[] = path.listFiles();
 		ArrayList<PluginFile> filePaths = new ArrayList<PluginFile>();
 		for (File file : files) {
@@ -24,7 +24,7 @@ public class PluginManager {
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
 		Plugin loadedPlugin = null;
 		try {
-			loadedPlugin = (Plugin) loader.loadClass("TextPlugin").newInstance();
+			loadedPlugin = (Plugin) loader.loadClass("plugins.TextPlugin").newInstance();
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
