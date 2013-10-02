@@ -55,7 +55,7 @@ public class ListingPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				PluginFile selected = (PluginFile) list.getSelectedValue();
 				Platform.ePanel.removeAll();
-				Platform.ePanel.add(PluginManager.loadPlugin(selected));
+				Platform.ePanel.add(selected.getPlugin().getComponent());
 				Platform.ePanel.repaint();
 				Platform.platform.pack();
 			}

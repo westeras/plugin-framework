@@ -9,6 +9,6 @@ public class Main {
 		FrameworkUI ui = new FrameworkUI();
 		ui.setVisible(true);
 		PluginFile plugin = files.get(0);
-		PluginManager.loadPlugin(plugin);
+//		PluginManager.loadPlugin(plugin);
 	}
 }

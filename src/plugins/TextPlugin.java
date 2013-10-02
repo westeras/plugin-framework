@@ -10,31 +10,14 @@ import javax.swing.JTextField;
 
 import plugin.Plugin;
 
-public class TextPlugin extends Plugin {
-
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void doActions() {
-		System.out.println("Actions being done");
-	}
-
-	@Override
-	public void unload() {
-		// TODO Auto-generated method stub
-
-	}
+public class TextPlugin implements Plugin {
 
 	@Override
 	public JPanel getComponent() {
-		this.panel = new JPanel();
+		JPanel panel = new JPanel();
 		final JTextField text = new JTextField(20);
 		text.setVisible(true);
-		this.panel.add(text, BorderLayout.CENTER);
+		panel.add(text, BorderLayout.CENTER);
 		
 		JButton button = new JButton();
 		button.addActionListener(new ActionListener() {
@@ -45,8 +28,8 @@ public class TextPlugin extends Plugin {
 			}	
 		});
 		
-		this.panel.add(button, BorderLayout.CENTER);
-		this.panel.setVisible(true);
-		return this.panel;
+		panel.add(button, BorderLayout.CENTER);
+		panel.setVisible(true);
+		return panel;
 	}
 }
