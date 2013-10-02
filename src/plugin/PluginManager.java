@@ -1,9 +1,6 @@
 package plugin;
 
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 
 
@@ -15,9 +12,7 @@ public class PluginManager {
 		File files[] = path.listFiles();
 		ArrayList<PluginFile> filePaths = new ArrayList<PluginFile>();
 		try {
-			URL[] url = { path.toURI().toURL() };
-			@SuppressWarnings("resource")
-			ClassLoader loader = new URLClassLoader(url);
+			ClassLoader loader = ClassLoader.getSystemClassLoader();
 			
 			for (File file : files) {
 				if (file.getName().contains(".jar")) {
@@ -28,7 +23,7 @@ public class PluginManager {
 				}
 			}
 		}
-		catch (MalformedURLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+		catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return filePaths;
