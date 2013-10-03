@@ -10,6 +10,12 @@ import javax.swing.JPanel;
 import ballworlds.Random;
 import ballworlds.SimulationPanel;
 
+/**
+ * TODO Put here a description of what this class does.
+ *
+ * @author schepedw.
+ *         Created Oct 2, 2013.
+ */
 public class BWPlugin implements Plugin {
 	private static final int GAP = 10;
 	private static final int NUMBER_OF_SIMULATIONS = 2;
@@ -21,6 +27,7 @@ public class BWPlugin implements Plugin {
 			Color.BLUE, Color.GREEN };
 	
 	
+	@Override
 	public JPanel getComponent() {
 		ArrayList<SimulationPanel> panels = constructSimulations();
 		JPanel content = new JPanel();
