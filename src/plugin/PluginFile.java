@@ -4,19 +4,19 @@ public class PluginFile {
 	
 	private String pluginName;
 	private String path;
-	private Plugin plugin;
+	private IPlugin plugin;
 	
-	public PluginFile(String name, String path, Plugin plugin) {
+	public PluginFile(String name, String path, IPlugin plugin) {
 		this.pluginName = name;
 		this.path = path;
 		this.plugin = plugin;
 	}
 	
-	public Plugin getPlugin() {
+	public IPlugin getPlugin() {
 		return plugin;
 	}
 	
-	public void setPlugin(Plugin plugin) {
+	public void setPlugin(IPlugin plugin) {
 		this.plugin = plugin;
 	}
 	public String getPluginName() {

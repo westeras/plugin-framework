@@ -2,7 +2,7 @@ package plugin;
 import javax.swing.JPanel;
 
 
-public abstract interface Plugin {
+public abstract interface IPlugin {
 
 	public abstract JPanel getComponent();
 }
