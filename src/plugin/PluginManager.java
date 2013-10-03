@@ -17,7 +17,7 @@ public class PluginManager {
 			for (File file : files) {
 				if (file.getName().contains(".jar")) {
 					String name = file.getName().replace(".jar", "");
-					Plugin plugin = (Plugin) loader.loadClass("plugins." + name).newInstance();
+					Plugin plugin = (Plugin) loader.loadClass("plugin." + name).newInstance();
 					PluginFile pFile = new PluginFile(name, file.getPath(), plugin);
 					filePaths.add(pFile);
 				}

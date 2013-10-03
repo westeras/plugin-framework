@@ -1,4 +1,4 @@
-package plugins;
+package plugin;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -9,9 +9,8 @@ import javax.swing.JPanel;
 
 import ballworlds.Random;
 import ballworlds.SimulationPanel;
-import plugin.Plugin;
 
-public class BWPlugin implements Plugin{
+public class BWPlugin implements Plugin {
 	private static final int GAP = 10;
 	private static final int NUMBER_OF_SIMULATIONS = 2;
 	private static final int MIN_WIDTH = 200;
@@ -20,7 +19,8 @@ public class BWPlugin implements Plugin{
 	private static final int MAX_HEIGHT = 300;
 	private static final Color[] BACKGROUND_COLORS = { Color.RED,
 			Color.BLUE, Color.GREEN };
-	@Override
+	
+	
 	public JPanel getComponent() {
 		ArrayList<SimulationPanel> panels = constructSimulations();
 		JPanel content = new JPanel();

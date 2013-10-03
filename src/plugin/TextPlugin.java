@@ -1,4 +1,4 @@
-package plugins;
+package plugin;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -8,11 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import plugin.Plugin;
-
 public class TextPlugin implements Plugin {
 
-	@Override
 	public JPanel getComponent() {
 		JPanel panel = new JPanel();
 		final JTextField text = new JTextField(20);
