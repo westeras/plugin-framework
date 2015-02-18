@@ -1,3 +1,3 @@
 plugin-framework
 ================
-adam
+Dynamically load plugins via drag and drop compiled jar files
